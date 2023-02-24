@@ -1,13 +1,33 @@
 import Foundation
 
-let grade = readLine()!
+func solution(_ x: Int, _ y: Int) -> [[Int]] {
+    var res = [[Int]]()
+    let A = maker(x, y)
+    let B = maker(x, y)
+    for i in 0 ..< x {
+        res.append([])
+        for j in 0 ..< y {
+            res[i].append(A[i][j] + B[i][j])
+        }
+    }
+    return res
+}
 
-var dic = [
-    "A+": 4.3, "A0": 4.0, "A-": 3.7,
-    "B+": 3.3, "B0": 3.0, "B-": 2.7,
-    "C+": 2.3, "C0": 2.0, "C-": 1.7,
-    "D+": 1.3, "D0": 1.0, "D-": 0.7,
-    "F": 0.0
-]
+func maker(_ x: Int, _ y: Int) -> [[Int]] {
+    var res = [[Int]]()
+    for i in 0 ..< x {
+        res.append([])
+        res[i].append(contentsOf: readLine()!.split(separator: " ").map { Int($0)! })
+    }
+    return res
+}
 
-print(dic["\(grade)"]!)
+let input = readLine()!.split(separator: " ").map { Int($0)! }
+let x = input[0], y = input[1]
+let result = solution(x, y)
+for i in 0 ..< x {
+    for j in 0 ..< y {
+        print(result[i][j], terminator: " ")
+    }
+    print()
+}

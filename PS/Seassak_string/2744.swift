@@ -4,8 +4,8 @@ let str = readLine()!
 
 for i in str {
     if i.isUppercase {
-        print(i.lowercased())
+        print(i.lowercased(), terminator: "")
     }else {
-        print(i.uppercased())
+        print(i.uppercased(), terminator: "")
     }
 }
